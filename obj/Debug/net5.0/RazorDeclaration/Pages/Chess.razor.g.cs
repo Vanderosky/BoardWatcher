@@ -91,12 +91,8 @@ using BoardWatcher.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 133 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+#line 142 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
        
-    public class ChessBoard
-    {
-        private Piece[,] grid = new Piece[9, 9];
-    }
     public class Piece
     {
         public Piece(int id, Boolean colour, Coords coord)
@@ -134,6 +130,50 @@ using BoardWatcher.Shared;
         public string Black { get; set; }
         public string Result { get; set; }
         public Move[] Moves { get; set; }
+        public Piece[] GamePieces = new Piece[32];
+
+        public void generateNewGamePieces()
+        {
+            Piece[] newPieces = new Piece[] 
+            {
+                // first black row
+                new Piece(0, false, new Coords(8, 1)),
+                new Piece(1, false, new Coords(8, 2)),
+                new Piece(2, false, new Coords(8, 3)),
+                new Piece(3, false, new Coords(8, 4)),
+                new Piece(4, false, new Coords(8, 5)),
+                new Piece(2, false, new Coords(8, 6)),
+                new Piece(1, false, new Coords(8, 7)),
+                new Piece(0, false, new Coords(8, 8)),
+                // second black row (pawns)
+                new Piece(5, false, new Coords(7, 1)),
+                new Piece(5, false, new Coords(7, 2)),
+                new Piece(5, false, new Coords(7, 3)),
+                new Piece(5, false, new Coords(7, 4)),
+                new Piece(5, false, new Coords(7, 5)),
+                new Piece(5, false, new Coords(7, 6)),
+                new Piece(5, false, new Coords(7, 7)),
+                new Piece(5, false, new Coords(7, 8)),
+                // first white row (pawns)
+                new Piece(5, true, new Coords(2, 1)),
+                new Piece(5, true, new Coords(2, 2)),
+                new Piece(5, true, new Coords(2, 3)),
+                new Piece(5, true, new Coords(2, 4)),
+                new Piece(5, true, new Coords(2, 5)),
+                new Piece(5, true, new Coords(2, 6)),
+                new Piece(5, true, new Coords(2, 7)),
+                new Piece(5, true, new Coords(2, 8)),
+                // second white row
+                new Piece(0, true, new Coords(1, 1)),
+                new Piece(1, true, new Coords(1, 2)),
+                new Piece(2, true, new Coords(1, 3)),
+                new Piece(3, true, new Coords(1, 4)),
+                new Piece(4, true, new Coords(1, 5)),
+                new Piece(2, true, new Coords(1, 6)),
+                new Piece(1, true, new Coords(1, 7)),
+                new Piece(0, true, new Coords(1, 8)),
+            };
+        }
 
         public void GameStateParser(string input)
         {
