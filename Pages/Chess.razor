@@ -1,0 +1,191 @@
+﻿@page "/chess"
+
+<table class="chess-board">
+    <tbody>
+        <tr>
+            <th></th>
+            <th>a</th>
+            <th>b</th>
+            <th>c</th>
+            <th>d</th>
+            <th>e</th>
+            <th>f</th>
+            <th>g</th>
+            <th>h</th>
+        </tr>
+
+        @* @for (var i = 8; i > 0; i--)
+            {
+            <tr>
+            <th>@i</th>
+            <td class="light">♜</td>
+            <td class="dark">♞</td>
+            <td class="light">♝</td>
+            <td class="dark">♛</td>
+            <td class="light">♚</td>
+            <td class="dark">♝</td>
+            <td class="light">♞</td>
+            <td class="dark">♜</td>
+            </tr>
+            } *@
+        <tr>
+            <th>8</th>
+            <td class="light">♜</td>
+            <td class="dark">♞</td>
+            <td class="light">♝</td>
+            <td class="dark">♛</td>
+            <td class="light">♚</td>
+            <td class="dark">♝</td>
+            <td class="light">♞</td>
+            <td class="dark">♜</td>
+        </tr>
+        <tr>
+            <th>7</th>
+            <td class="dark">♟</td>
+            <td class="light">♟</td>
+            <td class="dark">♟</td>
+            <td class="light">♟</td>
+            <td class="dark">♟</td>
+            <td class="light">♟</td>
+            <td class="dark">♟</td>
+            <td class="light">♟</td>
+        </tr>
+        <tr>
+            <th>6</th>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+        </tr>
+        <tr>
+            <th>5</th>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+            <td class="dark"></td>
+            <td class="light"></td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td class="light">♙</td>
+            <td class="dark">♙</td>
+            <td class="light">♙</td>
+            <td class="dark">♙</td>
+            <td class="light">♙</td>
+            <td class="dark">♙</td>
+            <td class="light">♙</td>
+            <td class="dark">♙</td>
+        </tr>
+        <tr>
+            <th>1</th>
+            <td class="dark">♖</td>
+            <td class="light">♘</td>
+            <td class="dark">♗</td>
+            <td class="light">♕</td>
+            <td class="dark">♔</td>
+            <td class="light">♗</td>
+            <td class="dark">♘</td>
+            <td class="light">♖</td>
+        </tr>
+    </tbody>
+</table>
+<div class="stateMenu">
+    <button class="btn btn-primary"> <span class="oi oi-media-skip-backward" aria-hidden="true"></span></button>
+    <button class="btn btn-primary"> <span class="oi oi-media-step-backward" aria-hidden="true"></span></button>
+    <button class="btn btn-primary"> <span class="oi oi-media-step-forward" aria-hidden="true"></span></button>
+    <button class="btn btn-primary"> <span class="oi oi-media-skip-forward" aria-hidden="true"></span></button>
+</div>
+
+
+
+
+
+
+@code {
+    public class ChessBoard
+    {
+        private Piece[,] grid = new Piece[9, 9];
+    }
+    public class Piece
+    {
+        public Piece(int id, Boolean colour, Coords coord)
+        {
+            this.Id = id;
+            this.Colour = colour;
+            this.Coord = coord;
+        }
+        private int Id { get; set; }
+        private Boolean Colour { get; set; }
+        private Coords Coord { get; set; }
+
+    }
+
+    public struct Coords
+    {
+        public Coords(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public double X { get; }
+        public double Y { get; }
+
+        public override string ToString() => $"({X}, {Y})";
+    }
+    public class GameState
+    {
+        public string Event { get; set; }
+        public string Site { get; set; }
+        public string Date { get; set; }
+        public string Round { get; set; }
+        public string White { get; set; }
+        public string Black { get; set; }
+        public string Result { get; set; }
+        public Move[] Moves { get; set; }
+
+        public void GameStateParser(string input)
+        {
+            //TODO
+        }
+    }
+
+    public struct Move
+    {
+        public int MoveId { get; }
+        public int Piece { get; }
+        public int CordX { get; }
+        public int CordY { get; }
+
+        //TO FINISH WITH GameStateParser
+    }
+}

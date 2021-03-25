@@ -1,0 +1,52 @@
+
+    .chess-board[b-n0nxo8uhw8] {
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+
+    .chess-board th[b-n0nxo8uhw8] {
+        padding: .5em;
+    }
+
+    .chess-board th+th[b-n0nxo8uhw8] {
+        border-bottom: 1px solid #000;
+    }
+
+    .chess-board th:first-child[b-n0nxo8uhw8],
+    .chess-board td:last-child[b-n0nxo8uhw8] {
+        border-right: 1px solid #000;
+    }
+
+    .chess-board tr:last-child td[b-n0nxo8uhw8] {
+        border-bottom: 1px solid;
+    }
+
+    .chess-board th:empty[b-n0nxo8uhw8] {
+        border: none;
+    }
+
+    .chess-board td[b-n0nxo8uhw8] {
+        width: 1.5em;
+        height: 1.5em;
+        text-align: center;
+        font-size: 32px;
+        line-height: 0;
+    }
+
+    .chess-board .light[b-n0nxo8uhw8] {
+        background: #eee;
+    }
+
+    .chess-board .dark[b-n0nxo8uhw8] {
+        background: #aaa;
+    }
+
+    .btn[b-n0nxo8uhw8] {
+        margin-top: 1em;
+        margin-inline: 5px;
+    }
+
+    .stateMenu[b-n0nxo8uhw8] {
+        margin-left: 5em;
+    }
+    
