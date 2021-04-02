@@ -153,7 +153,6 @@
         private Coords Coord { get; set; }
 
     }
-
     public struct Coords
     {
         public Coords(double x, double y)
@@ -162,22 +161,20 @@
             Y = y;
         }
 
-        public double X { get; }
-        public double Y { get; }
-
-        public override string ToString() => $"({X}, {Y})";
+        private double X { get; }
+        private double Y { get; }
     }
     public class GameState
     {
-        public string Event { get; set; }
-        public string Site { get; set; }
-        public string Date { get; set; }
-        public string Round { get; set; }
-        public string White { get; set; }
-        public string Black { get; set; }
-        public string Result { get; set; }
-        public Move[] Moves { get; set; }
-        public Piece[] GamePieces = new Piece[32];
+        private string Event { get; set; }
+        private string Site { get; set; }
+        private string Date { get; set; }
+        private string Round { get; set; }
+        private string White { get; set; }
+        private string Black { get; set; }
+        private string Result { get; set; }
+        private Move[] Moves { get; set; }
+        private Piece[] GamePieces = new Piece[32];
 
         public void generateNewGamePieces()
         {
@@ -230,10 +227,10 @@
 
     public struct Move
     {
-        public int MoveId { get; }
-        public int Piece { get; }
-        public int CordX { get; }
-        public int CordY { get; }
+        private int MoveId { get; }
+        private int Piece { get; }
+        private int CordX { get; }
+        private int CordY { get; }
 
         //TO FINISH WITH GameStateParser
     }
