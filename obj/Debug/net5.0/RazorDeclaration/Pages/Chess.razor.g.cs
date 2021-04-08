@@ -95,28 +95,26 @@ using BoardWatcher.Shared;
        
     public class Piece
     {
-        public Piece(int id, Boolean colour, Coords coord)
+        public Piece(int id, Boolean colour)
         {
             this.Id = id;
             this.Colour = colour;
-            this.Coord = coord;
         }
-        private int Id { get; set; }
-        private Boolean Colour { get; set; }
-        private Coords Coord { get; set; }
+        private int id;
+        public int Id 
+        { 
+            get { return Id; }
+            set { Id = value; }
+        }
+        private Boolean colour;
+        public Boolean Colour
+        { 
+            get { return Colour; }
+            set { Colour = value; }
+        }
 
     }
-    public struct Coords
-    {
-        public Coords(double x, double y)
-        {
-            X = x;
-            Y = y;
-        }
 
-        private double X { get; }
-        private double Y { get; }
-    }
     public class GameState
     {
         private string Event { get; set; }
@@ -126,50 +124,106 @@ using BoardWatcher.Shared;
         private string White { get; set; }
         private string Black { get; set; }
         private string Result { get; set; }
-        private Move[] Moves { get; set; }
-        private Piece[] GamePieces = new Piece[32];
+        private Piece[] board;
 
-        public void generateNewGamePieces()
+        private Piece[] Board
+        { 
+            get { return Board; }
+            set { Board = value; }
+        }
+        public void generateNewBoard()
         {
-            Piece[] newPieces = new Piece[] 
+            Piece[] pieces = new Piece[64];
+            Piece[] blackPieces = new Piece[]
             {
-                // first black row
-                new Piece(0, false, new Coords(8, 1)),
-                new Piece(1, false, new Coords(8, 2)),
-                new Piece(2, false, new Coords(8, 3)),
-                new Piece(3, false, new Coords(8, 4)),
-                new Piece(4, false, new Coords(8, 5)),
-                new Piece(2, false, new Coords(8, 6)),
-                new Piece(1, false, new Coords(8, 7)),
-                new Piece(0, false, new Coords(8, 8)),
-                // second black row (pawns)
-                new Piece(5, false, new Coords(7, 1)),
-                new Piece(5, false, new Coords(7, 2)),
-                new Piece(5, false, new Coords(7, 3)),
-                new Piece(5, false, new Coords(7, 4)),
-                new Piece(5, false, new Coords(7, 5)),
-                new Piece(5, false, new Coords(7, 6)),
-                new Piece(5, false, new Coords(7, 7)),
-                new Piece(5, false, new Coords(7, 8)),
-                // first white row (pawns)
-                new Piece(5, true, new Coords(2, 1)),
-                new Piece(5, true, new Coords(2, 2)),
-                new Piece(5, true, new Coords(2, 3)),
-                new Piece(5, true, new Coords(2, 4)),
-                new Piece(5, true, new Coords(2, 5)),
-                new Piece(5, true, new Coords(2, 6)),
-                new Piece(5, true, new Coords(2, 7)),
-                new Piece(5, true, new Coords(2, 8)),
-                // second white row
-                new Piece(0, true, new Coords(1, 1)),
-                new Piece(1, true, new Coords(1, 2)),
-                new Piece(2, true, new Coords(1, 3)),
-                new Piece(3, true, new Coords(1, 4)),
-                new Piece(4, true, new Coords(1, 5)),
-                new Piece(2, true, new Coords(1, 6)),
-                new Piece(1, true, new Coords(1, 7)),
-                new Piece(0, true, new Coords(1, 8)),
+                new Piece(2, false),
+                new Piece(3, false),
+                new Piece(4, false),
+                new Piece(5, false),
+                new Piece(6, false),
+                new Piece(4, false),
+                new Piece(3, false),
+                new Piece(2, false),
+
+                new Piece(1, false),
+                new Piece(1, false),
+                new Piece(1, false),
+                new Piece(1, false),
+                new Piece(1, false),
+                new Piece(1, false),
+                new Piece(1, false),
+                new Piece(1, false)
             };
+            Piece[] whitePieces = new Piece[]
+            {
+                new Piece(1, true),
+                new Piece(1, true),
+                new Piece(1, true),
+                new Piece(1, true),
+                new Piece(1, true),
+                new Piece(1, true),
+                new Piece(1, true),
+                new Piece(1, true),
+
+                new Piece(2, true),
+                new Piece(3, true),
+                new Piece(4, true),
+                new Piece(5, true),
+                new Piece(6, true),
+                new Piece(4, true),
+                new Piece(3, true),
+                new Piece(2, true)
+            };
+            pieces.Concat(blackPieces).ToArray();
+            for(int i = 0; i < 32; i++)
+            {
+                pieces.Append(new Piece(0, false));
+            }
+            pieces.Concat(whitePieces).ToArray();
+        }
+
+        public string GetPiece(int tileId)
+        {
+            Piece tmpPiece = this.Board[tileId];
+            if (tmpPiece.Colour)
+            {
+                switch (tmpPiece.Id)
+                {
+                    case 1:
+                        return "♟";
+                    case 2:
+                        return "♜";
+                    case 3:
+                        return "♞";
+                    case 4:
+                        return "♝";
+                    case 5:
+                        return "♛";
+                    case 6:
+                        return "♚";
+                    default:
+                        return "";
+                }
+            } else
+            {
+                switch (tmpPiece.Id)
+                {
+                    case 1:
+                        return "♙";
+                    case 2:
+                        return "♖";
+                    case 3:
+                        return "♘";
+                    case 4:
+                        return "♗";
+                    case 5:
+                        return "♕";
+                    case 6:
+                        return "♔";
+                    default:
+                        return "";
+                }
+            }
         }
 
         public void GameStateParser(string input)
@@ -177,15 +231,9 @@ using BoardWatcher.Shared;
             //TODO
         }
     }
-
-    public struct Move
+    private GameState gameState = new GameState();
+    protected override void OnInitialized()
     {
-        private int MoveId { get; }
-        private int Piece { get; }
-        private int CordX { get; }
-        private int CordY { get; }
-
-        //TO FINISH WITH GameStateParser
     }
 
 #line default
