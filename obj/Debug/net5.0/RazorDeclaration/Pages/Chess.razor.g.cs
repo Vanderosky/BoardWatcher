@@ -98,40 +98,46 @@ using BoardWatcher.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 154 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+#line 152 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
        
     private Piece[] gameBoard;
-    private int moveForwardCounter;
-    private int moveBackwardsCounter;
+    private Move[] MovesHistory;
+    private int moveCounter;
     protected override async Task OnInitializedAsync()
     {
         gameBoard = await GameStateService.GetPieceData();
-        moveForwardCounter = 0;
-        moveBackwardsCounter = 0;
+        moveCounter = 0;
+        Move[] moves = new Move[]
+        {
+            new Move(48, 40),
+            new Move(49, 41),
+            new Move(50, 42),
+            new Move(40, 32),
+        };
+        MovesHistory = moves;
     }
+
 
     public void moveForward()
     {
-        this.gameBoard[40] = this.gameBoard[48];
-        this.gameBoard[48] = getClearField();
-        moveForwardCounter++;
+        Move currentMove = MovesHistory[moveCounter];
+        this.gameBoard[currentMove.toField] = this.gameBoard[currentMove.fromField];
+        this.gameBoard[currentMove.fromField] = getClearField();
+        if (moveCounter < MovesHistory.Length - 1) moveCounter++;
     }
     public void moveBackwards()
     {
-        this.gameBoard[48] = this.gameBoard[40];
-        this.gameBoard[40] = getClearField();
-        moveBackwardsCounter++;
+        if (moveCounter > 0) moveCounter--;
     }
 
     public void moveFastForward()
     {
-        moveForwardCounter = 0;
+        moveCounter = MovesHistory.Length;
     }
 
     public void moveFastBackwards()
     {
-        moveBackwardsCounter = 0;
-
+        moveCounter = 0;
     }
 
     public Piece getClearField()

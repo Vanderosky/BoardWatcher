@@ -130,21 +130,19 @@ else
             <thead>
                 <tr>
                     <th>Move</th>
-                    <th>Whites</th>
-                    <th>Black</th>
+                    <th>From</th>
+                    <th>To</th>
                 </tr>
             </thead>
             <tbody>
+            @for (int index = 0; index < MovesHistory.Length; index++)
+            {
                 <tr>
-                    <td>22.</td>
-                    <td>xh3</td>
-                    <td>xf4</td>
+                    <td>@index</td>
+                    <td>@MovesHistory[index].fromField</td>
+                    <td>@MovesHistory[index].toField</td>
                 </tr>
-                <tr>
-                    <td>23.</td>
-                    <td>f3</td>
-                    <td>d5</td>
-                </tr>
+            }
             </tbody>
         </table>
         </div>
@@ -153,37 +151,43 @@ else
 
 @code {
     private Piece[] gameBoard;
-    private int moveForwardCounter;
-    private int moveBackwardsCounter;
+    private Move[] MovesHistory;
+    private int moveCounter;
     protected override async Task OnInitializedAsync()
     {
         gameBoard = await GameStateService.GetPieceData();
-        moveForwardCounter = 0;
-        moveBackwardsCounter = 0;
+        moveCounter = 0;
+        Move[] moves = new Move[]
+        {
+            new Move(48, 40),
+            new Move(49, 41),
+            new Move(50, 42),
+            new Move(40, 32),
+        };
+        MovesHistory = moves;
     }
+
 
     public void moveForward()
     {
-        this.gameBoard[40] = this.gameBoard[48];
-        this.gameBoard[48] = getClearField();
-        moveForwardCounter++;
+        Move currentMove = MovesHistory[moveCounter];
+        this.gameBoard[currentMove.toField] = this.gameBoard[currentMove.fromField];
+        this.gameBoard[currentMove.fromField] = getClearField();
+        if (moveCounter < MovesHistory.Length - 1) moveCounter++;
     }
     public void moveBackwards()
     {
-        this.gameBoard[48] = this.gameBoard[40];
-        this.gameBoard[40] = getClearField();
-        moveBackwardsCounter++;
+        if (moveCounter > 0) moveCounter--;
     }
 
     public void moveFastForward()
     {
-        moveForwardCounter = 0;
+        moveCounter = MovesHistory.Length;
     }
 
     public void moveFastBackwards()
     {
-        moveBackwardsCounter = 0;
-
+        moveCounter = 0;
     }
 
     public Piece getClearField()
