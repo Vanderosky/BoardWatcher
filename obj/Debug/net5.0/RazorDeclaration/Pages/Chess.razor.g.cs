@@ -82,6 +82,13 @@ using BoardWatcher.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+using BoardWatcher.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/chess")]
     public partial class Chess : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -91,154 +98,95 @@ using BoardWatcher.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 142 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+#line 154 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
        
-    public class Piece
+    private Piece[] gameBoard;
+    private int moveForwardCounter;
+    private int moveBackwardsCounter;
+    protected override async Task OnInitializedAsync()
     {
-        public Piece(int id, Boolean colour)
-        {
-            this.Id = id;
-            this.Colour = colour;
-        }
-        private int id;
-        public int Id 
-        { 
-            get { return Id; }
-            set { Id = value; }
-        }
-        private Boolean colour;
-        public Boolean Colour
-        { 
-            get { return Colour; }
-            set { Colour = value; }
-        }
+        gameBoard = await GameStateService.GetPieceData();
+        moveForwardCounter = 0;
+        moveBackwardsCounter = 0;
+    }
+
+    public void moveForward()
+    {
+        this.gameBoard[40] = this.gameBoard[48];
+        this.gameBoard[48] = getClearField();
+        moveForwardCounter++;
+    }
+    public void moveBackwards()
+    {
+        this.gameBoard[48] = this.gameBoard[40];
+        this.gameBoard[40] = getClearField();
+        moveBackwardsCounter++;
+    }
+
+    public void moveFastForward()
+    {
+        moveForwardCounter = 0;
+    }
+
+    public void moveFastBackwards()
+    {
+        moveBackwardsCounter = 0;
 
     }
 
-    public class GameState
+    public Piece getClearField()
     {
-        private string Event { get; set; }
-        private string Site { get; set; }
-        private string Date { get; set; }
-        private string Round { get; set; }
-        private string White { get; set; }
-        private string Black { get; set; }
-        private string Result { get; set; }
-        private Piece[] board;
-
-        private Piece[] Board
-        { 
-            get { return Board; }
-            set { Board = value; }
-        }
-        public void generateNewBoard()
-        {
-            Piece[] pieces = new Piece[64];
-            Piece[] blackPieces = new Piece[]
-            {
-                new Piece(2, false),
-                new Piece(3, false),
-                new Piece(4, false),
-                new Piece(5, false),
-                new Piece(6, false),
-                new Piece(4, false),
-                new Piece(3, false),
-                new Piece(2, false),
-
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false)
-            };
-            Piece[] whitePieces = new Piece[]
-            {
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-
-                new Piece(2, true),
-                new Piece(3, true),
-                new Piece(4, true),
-                new Piece(5, true),
-                new Piece(6, true),
-                new Piece(4, true),
-                new Piece(3, true),
-                new Piece(2, true)
-            };
-            pieces.Concat(blackPieces).ToArray();
-            for(int i = 0; i < 32; i++)
-            {
-                pieces.Append(new Piece(0, false));
-            }
-            pieces.Concat(whitePieces).ToArray();
-        }
-
-        public string GetPiece(int tileId)
-        {
-            Piece tmpPiece = this.Board[tileId];
-            if (tmpPiece.Colour)
-            {
-                switch (tmpPiece.Id)
-                {
-                    case 1:
-                        return "♟";
-                    case 2:
-                        return "♜";
-                    case 3:
-                        return "♞";
-                    case 4:
-                        return "♝";
-                    case 5:
-                        return "♛";
-                    case 6:
-                        return "♚";
-                    default:
-                        return "";
-                }
-            } else
-            {
-                switch (tmpPiece.Id)
-                {
-                    case 1:
-                        return "♙";
-                    case 2:
-                        return "♖";
-                    case 3:
-                        return "♘";
-                    case 4:
-                        return "♗";
-                    case 5:
-                        return "♕";
-                    case 6:
-                        return "♔";
-                    default:
-                        return "";
-                }
-            }
-        }
-
-        public void GameStateParser(string input)
-        {
-            //TODO
-        }
+        return new Piece(0, false);
     }
-    private GameState gameState = new GameState();
-    protected override void OnInitialized()
+
+    public string GetPiece(Piece piece)
     {
+        if (piece.Color)
+        {
+            switch (piece.Id)
+            {
+                case 1:
+                    return "♙";
+                case 2:
+                    return "♖";
+                case 3:
+                    return "♘";
+                case 4:
+                    return "♗";
+                case 5:
+                    return "♕";
+                case 6:
+                    return "♔";
+                default:
+                    return "";
+            }
+        }
+        else
+        {
+            switch (piece.Id)
+            {
+                case 1:
+                    return "♟";
+                case 2:
+                    return "♜";
+                case 3:
+                    return "♞";
+                case 4:
+                    return "♝";
+                case 5:
+                    return "♛";
+                case 6:
+                    return "♚";
+                default:
+                    return "";
+            }
+        }
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ChessGameStateService GameStateService { get; set; }
     }
 }
 #pragma warning restore 1591

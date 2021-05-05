@@ -30,7 +30,7 @@
         width: 1.5em;
         height: 1.5em;
         text-align: center;
-        font-size: 32px;
+        font-size: 3.5em;
         line-height: 0;
     }
 
@@ -50,6 +50,15 @@
     .stateMenu[b-n0nxo8uhw8] {
         margin-left: 5em;
     }
+
+    .flex-container[b-n0nxo8uhw8] {
+        display: flex;
+    }
+
+    .flex-child[b-n0nxo8uhw8] {
+        flex: 1;
+    }  
+    
     
 /* _content/BoardWatcher/Shared/MainLayout.razor.rz.scp.css */
 .page[b-i5slnx6lli] {

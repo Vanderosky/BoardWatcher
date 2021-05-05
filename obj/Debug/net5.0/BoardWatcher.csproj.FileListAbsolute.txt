@@ -61,3 +61,14 @@ C:\Users\Vander\Documents\Programming\C#\BoardWatcher\obj\Debug\net5.0\Razor\Pag
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\obj\Debug\net5.0\RazorDeclaration\Pages\Chess.razor.g.cs
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\obj\Debug\net5.0\Razor\Pages\Chess.razor.g.cs
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\obj\Debug\net5.0\scopedcss\Pages\Chess.razor.rz.scp.css
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Connections.Common.dll
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.AspNetCore.SignalR.Client.dll
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\System.IO.Pipelines.dll
