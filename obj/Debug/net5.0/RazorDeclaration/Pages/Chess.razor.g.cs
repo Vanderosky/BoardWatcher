@@ -98,7 +98,7 @@ using BoardWatcher.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 151 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+#line 152 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
        
     private Piece[] gameBoard;
     private Move[] MovesHistory;
@@ -109,10 +109,12 @@ using BoardWatcher.Data;
         moveCounter = 0;
         Move[] moves = new Move[]
         {
-            new Move(2 ,48, 40),
-            new Move(2, 49, 41),
-            new Move(4, 50, 42),
-            new Move(5, 40, 32)
+            new Move(1 ,48, 40),
+            new Move(1, 9, 17),
+            new Move(1, 50, 42),
+            new Move(4, 2, 16),
+            new Move(3 ,62, 47),
+            new Move(4, 16, 52)
         };
         MovesHistory = moves;
     }

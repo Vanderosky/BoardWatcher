@@ -135,11 +135,12 @@ else
                 </tr>
             </thead>
             <tbody>
-            @for (int index = 0; index < MovesHistory.Length; index++)
+            @for (int index = 0; index < MovesHistory.Length - 1; index += 2)
             {
                 <tr>
-                    <td>@index</td>
+                    <td>@(index / 2).</td>
                     <td>@getMoveInNotation(MovesHistory[index])</td>
+                    <td>@getMoveInNotation(MovesHistory[index + 1])</td>
                 </tr>
             }
             </tbody>
@@ -158,10 +159,12 @@ else
         moveCounter = 0;
         Move[] moves = new Move[]
         {
-            new Move(2 ,48, 40),
-            new Move(2, 49, 41),
-            new Move(4, 50, 42),
-            new Move(5, 40, 32)
+            new Move(1 ,48, 40),
+            new Move(1, 9, 17),
+            new Move(1, 50, 42),
+            new Move(4, 2, 16),
+            new Move(3 ,62, 47),
+            new Move(4, 16, 52)
         };
         MovesHistory = moves;
     }
