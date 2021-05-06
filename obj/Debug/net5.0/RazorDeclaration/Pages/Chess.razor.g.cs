@@ -98,7 +98,7 @@ using BoardWatcher.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 152 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+#line 151 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
        
     private Piece[] gameBoard;
     private Move[] MovesHistory;
@@ -109,10 +109,10 @@ using BoardWatcher.Data;
         moveCounter = 0;
         Move[] moves = new Move[]
         {
-            new Move(48, 40),
-            new Move(49, 41),
-            new Move(50, 42),
-            new Move(40, 32),
+            new Move(2 ,48, 40),
+            new Move(2, 49, 41),
+            new Move(4, 50, 42),
+            new Move(5, 40, 32)
         };
         MovesHistory = moves;
     }
@@ -143,6 +143,37 @@ using BoardWatcher.Data;
     public Piece getClearField()
     {
         return new Piece(0, false);
+    }
+
+    public string getMoveInNotation(Move move)
+    {
+        string fieldName = "";
+        fieldName += getPieceName(move.pieceId);
+        fieldName += ((char) (move.toField % 8 + 97));
+        fieldName += (8 - move.toField / 8).ToString();
+        return fieldName;
+    }
+
+    public string getPieceName(int pieceId)
+    {
+        switch (pieceId)
+        {
+            case 0:
+                return "";
+            case 1:
+                return ""; // pawn
+            case 2:
+                return "R"; // rook
+            case 3:
+                return "N"; // knight
+            case 4:
+                return "B"; // bishop
+            case 5:
+                return "Q"; // queen
+            case 6:
+                return "K"; // king
+        }
+        return "";
     }
 
     public string GetPiece(Piece piece)

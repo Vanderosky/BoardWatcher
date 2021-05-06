@@ -78,39 +78,6 @@
         }
       },
       {
-        "HashCode": 938943013,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.Index",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.Index"
-        }
-      },
-      {
-        "HashCode": -1792481140,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.Index",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BoardWatcher.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -1830383124,
         "Kind": "Components.Component",
         "Name": "BoardWatcher.Pages.FetchData",
@@ -140,6 +107,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "BoardWatcher.Pages.FetchData",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 938943013,
+        "Kind": "Components.Component",
+        "Name": "BoardWatcher.Pages.Index",
+        "AssemblyName": "BoardWatcher",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BoardWatcher.Pages.Index"
+        }
+      },
+      {
+        "HashCode": -1792481140,
+        "Kind": "Components.Component",
+        "Name": "BoardWatcher.Pages.Index",
+        "AssemblyName": "BoardWatcher",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BoardWatcher.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BoardWatcher.Pages.Index",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

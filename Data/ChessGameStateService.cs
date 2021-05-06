@@ -72,9 +72,9 @@ namespace BoardWatcher.Data
             return Task.FromResult(pieces.ToArray());
         }
 
-        protected async Task OnInitializedAsync()
+        public async Task GetServerData()
         {
-            await webSocket.ConnectAsync(new Uri("127.0.0.1:8181"), disposalTokenSource.Token);
+            await webSocket.ConnectAsync(new Uri("127.0.0.1:8185"), disposalTokenSource.Token);
             _ = ReceiveLoop();
         }
 

@@ -130,8 +130,8 @@ else
             <thead>
                 <tr>
                     <th>Move</th>
-                    <th>From</th>
-                    <th>To</th>
+                    <th>Whites</th>
+                    <th>Blacks</th>
                 </tr>
             </thead>
             <tbody>
@@ -139,8 +139,7 @@ else
             {
                 <tr>
                     <td>@index</td>
-                    <td>@MovesHistory[index].fromField</td>
-                    <td>@MovesHistory[index].toField</td>
+                    <td>@getMoveInNotation(MovesHistory[index])</td>
                 </tr>
             }
             </tbody>
@@ -159,10 +158,10 @@ else
         moveCounter = 0;
         Move[] moves = new Move[]
         {
-            new Move(48, 40),
-            new Move(49, 41),
-            new Move(50, 42),
-            new Move(40, 32),
+            new Move(2 ,48, 40),
+            new Move(2, 49, 41),
+            new Move(4, 50, 42),
+            new Move(5, 40, 32)
         };
         MovesHistory = moves;
     }
@@ -193,6 +192,37 @@ else
     public Piece getClearField()
     {
         return new Piece(0, false);
+    }
+
+    public string getMoveInNotation(Move move)
+    {
+        string fieldName = "";
+        fieldName += getPieceName(move.pieceId);
+        fieldName += ((char) (move.toField % 8 + 97));
+        fieldName += (8 - move.toField / 8).ToString();
+        return fieldName;
+    }
+
+    public string getPieceName(int pieceId)
+    {
+        switch (pieceId)
+        {
+            case 0:
+                return "";
+            case 1:
+                return ""; // pawn
+            case 2:
+                return "R"; // rook
+            case 3:
+                return "N"; // knight
+            case 4:
+                return "B"; // bishop
+            case 5:
+                return "Q"; // queen
+            case 6:
+                return "K"; // king
+        }
+        return "";
     }
 
     public string GetPiece(Piece piece)
