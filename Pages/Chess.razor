@@ -2,6 +2,7 @@
 
 @using BoardWatcher.Data
 @inject ChessGameStateService GameStateService
+@inject IJSRuntime JSRuntime
 
 
 @if (gameBoard == null)
@@ -126,25 +127,28 @@ else
             </div>
         </div>
         <div class="flex-child">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Move</th>
-                    <th>Whites</th>
-                    <th>Blacks</th>
-                </tr>
-            </thead>
-            <tbody>
-            @for (int index = 0; index < MovesHistory.Length - 1; index += 2)
-            {
-                <tr>
-                    <td>@(index / 2).</td>
-                    <td>@getMoveInNotation(MovesHistory[index])</td>
-                    <td>@getMoveInNotation(MovesHistory[index + 1])</td>
-                </tr>
-            }
-            </tbody>
-        </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Move</th>
+                        <th>Whites</th>
+                        <th>Blacks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int index = 0; index < MovesHistory.Length - 1; index += 2)
+                    {
+                        <tr>
+                            <td>@(index / 2).</td>
+                            <td>@getMoveInNotation(MovesHistory[index])</td>
+                            <td>@getMoveInNotation(MovesHistory[index + 1])</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="center">
+                <button class="btn btn-primary" @onclick="DownloadFile">Download PGN File</button>
+            </div>
         </div>
     </div>
 }
@@ -201,9 +205,20 @@ else
     {
         string fieldName = "";
         fieldName += getPieceName(move.pieceId);
-        fieldName += ((char) (move.toField % 8 + 97));
+        fieldName += ((char)(move.toField % 8 + 97));
         fieldName += (8 - move.toField / 8).ToString();
         return fieldName;
+    }
+
+    public async void DownloadFile()
+    {
+        string fileContent = "";
+        foreach (Move move in MovesHistory)
+        {
+            fileContent += @getMoveInNotation(move);
+            fileContent += " ";
+        }
+        await JSRuntime.InvokeAsync<object>( "FileSave", "PGN", fileContent);
     }
 
     public string getPieceName(int pieceId)

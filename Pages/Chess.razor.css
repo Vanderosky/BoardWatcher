@@ -56,6 +56,11 @@
 
     .flex-child {
         flex: 1;
-    }  
+    } 
+
+    .center {
+        display: flex;
+        justify-content: center;
+    }
     
     

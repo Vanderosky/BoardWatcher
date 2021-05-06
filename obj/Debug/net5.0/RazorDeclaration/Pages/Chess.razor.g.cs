@@ -98,7 +98,7 @@ using BoardWatcher.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 152 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+#line 156 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
        
     private Piece[] gameBoard;
     private Move[] MovesHistory;
@@ -151,9 +151,20 @@ using BoardWatcher.Data;
     {
         string fieldName = "";
         fieldName += getPieceName(move.pieceId);
-        fieldName += ((char) (move.toField % 8 + 97));
+        fieldName += ((char)(move.toField % 8 + 97));
         fieldName += (8 - move.toField / 8).ToString();
         return fieldName;
+    }
+
+    public async void DownloadFile()
+    {
+        string fileContent = "";
+        foreach (Move move in MovesHistory)
+        {
+            fileContent += @getMoveInNotation(move);
+            fileContent += " ";
+        }
+        await JSRuntime.InvokeAsync<object>( "FileSave", "PGN", fileContent);
     }
 
     public string getPieceName(int pieceId)
@@ -225,6 +236,7 @@ using BoardWatcher.Data;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JSRuntime { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ChessGameStateService GameStateService { get; set; }
     }
 }

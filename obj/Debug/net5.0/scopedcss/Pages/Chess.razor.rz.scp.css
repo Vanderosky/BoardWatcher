@@ -56,6 +56,11 @@
 
     .flex-child[b-n0nxo8uhw8] {
         flex: 1;
-    }  
+    } 
+
+    .center[b-n0nxo8uhw8] {
+        display: flex;
+        justify-content: center;
+    }
     
     
