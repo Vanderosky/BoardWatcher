@@ -12,72 +12,6 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": -1408798475,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.Checkers",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Checkers"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.Checkers"
-        }
-      },
-      {
-        "HashCode": -1374432303,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.Checkers",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BoardWatcher.Pages.Checkers"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.Checkers",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1830383124,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.FetchData",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.FetchData"
-        }
-      },
-      {
-        "HashCode": 351425065,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.FetchData",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BoardWatcher.Pages.FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.FetchData",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 938943013,
         "Kind": "Components.Component",
         "Name": "BoardWatcher.Pages.Index",
@@ -107,72 +41,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "BoardWatcher.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -172048634,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.Counter",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.Counter"
-        }
-      },
-      {
-        "HashCode": 1235244298,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.Counter",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BoardWatcher.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1478074045,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.Chess",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Chess"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.Chess"
-        }
-      },
-      {
-        "HashCode": 1871347033,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.Chess",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BoardWatcher.Pages.Chess"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.Chess",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -210,6 +78,72 @@
         }
       },
       {
+        "HashCode": 1478074045,
+        "Kind": "Components.Component",
+        "Name": "BoardWatcher.Pages.Chess",
+        "AssemblyName": "BoardWatcher",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Chess"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BoardWatcher.Pages.Chess"
+        }
+      },
+      {
+        "HashCode": 1871347033,
+        "Kind": "Components.Component",
+        "Name": "BoardWatcher.Pages.Chess",
+        "AssemblyName": "BoardWatcher",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BoardWatcher.Pages.Chess"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BoardWatcher.Pages.Chess",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1408798475,
+        "Kind": "Components.Component",
+        "Name": "BoardWatcher.Pages.Checkers",
+        "AssemblyName": "BoardWatcher",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Checkers"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BoardWatcher.Pages.Checkers"
+        }
+      },
+      {
+        "HashCode": -1374432303,
+        "Kind": "Components.Component",
+        "Name": "BoardWatcher.Pages.Checkers",
+        "AssemblyName": "BoardWatcher",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BoardWatcher.Pages.Checkers"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BoardWatcher.Pages.Checkers",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1818469574,
         "Kind": "Components.Component",
         "Name": "BoardWatcher.App",
@@ -243,55 +177,35 @@
         }
       },
       {
-        "HashCode": -1771987311,
+        "HashCode": 1382613882,
         "Kind": "Components.Component",
-        "Name": "BoardWatcher.Shared.SurveyPrompt",
+        "Name": "BoardWatcher.Shared.NavMenu",
         "AssemblyName": "BoardWatcher",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
+            "TagName": "NavMenu"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Shared.SurveyPrompt"
+          "Common.TypeName": "BoardWatcher.Shared.NavMenu"
         }
       },
       {
-        "HashCode": 1928889572,
+        "HashCode": 896078708,
         "Kind": "Components.Component",
-        "Name": "BoardWatcher.Shared.SurveyPrompt",
+        "Name": "BoardWatcher.Shared.NavMenu",
         "AssemblyName": "BoardWatcher",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "BoardWatcher.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
+            "TagName": "BoardWatcher.Shared.NavMenu"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Shared.SurveyPrompt",
+          "Common.TypeName": "BoardWatcher.Shared.NavMenu",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -392,35 +306,55 @@
         }
       },
       {
-        "HashCode": 1382613882,
+        "HashCode": -1771987311,
         "Kind": "Components.Component",
-        "Name": "BoardWatcher.Shared.NavMenu",
+        "Name": "BoardWatcher.Shared.SurveyPrompt",
         "AssemblyName": "BoardWatcher",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "NavMenu"
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Shared.NavMenu"
+          "Common.TypeName": "BoardWatcher.Shared.SurveyPrompt"
         }
       },
       {
-        "HashCode": 896078708,
+        "HashCode": 1928889572,
         "Kind": "Components.Component",
-        "Name": "BoardWatcher.Shared.NavMenu",
+        "Name": "BoardWatcher.Shared.SurveyPrompt",
         "AssemblyName": "BoardWatcher",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "BoardWatcher.Shared.NavMenu"
+            "TagName": "BoardWatcher.Shared.SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Shared.NavMenu",
+          "Common.TypeName": "BoardWatcher.Shared.SurveyPrompt",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -16047,11 +15981,6 @@
       "FileKind": "component"
     },
     {
-      "FilePath": "c:\\Users\\Vander\\Documents\\Programming\\C#\\BoardWatcher\\Pages\\FetchData.razor",
-      "TargetPath": "Pages\\FetchData.razor",
-      "FileKind": "component"
-    },
-    {
       "FilePath": "c:\\Users\\Vander\\Documents\\Programming\\C#\\BoardWatcher\\Pages\\Index.razor",
       "TargetPath": "Pages\\Index.razor",
       "FileKind": "component"
@@ -16065,11 +15994,6 @@
       "FilePath": "c:\\Users\\Vander\\Documents\\Programming\\C#\\BoardWatcher\\Pages\\_Host.cshtml",
       "TargetPath": "Pages\\_Host.cshtml",
       "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Vander\\Documents\\Programming\\C#\\BoardWatcher\\Pages\\Counter.razor",
-      "TargetPath": "Pages\\Counter.razor",
-      "FileKind": "component"
     },
     {
       "FilePath": "c:\\Users\\Vander\\Documents\\Programming\\C#\\BoardWatcher\\App.razor",

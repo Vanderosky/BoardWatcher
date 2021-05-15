@@ -1,4 +1,5 @@
 @page "/gameFinder"
+@inject NavigationManager NavigationManager
 
 <div class="cotainer">
     <div class="row justify-content-center">
@@ -8,15 +9,18 @@
                     <div class="form-group row">
                         <label for="email_address" class="col-md-4 col-form-label text-md-right">Game ID</label>
                         <div class="col-md-6">
-                            <input type="text" id="email_address" class="form-control" name="email-address" required
-                                autofocus>
-                        </div>
-                    </div>
+                            <EditForm Model="@gameInputModel" OnValidSubmit="@HandleValidSubmit">
+                                <DataAnnotationsValidator />
+                                <ValidationSummary />
 
-                    <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            Watch game
-                        </button>
+                                <InputText type="number" class="form-control" required autofocus
+                                    @bind-Value="gameInputModel.Id" />
+
+                                <button type="submit" class="btn btn-primary">
+                                    Watch game
+                                </button>
+                            </EditForm>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -25,4 +29,10 @@
 </div>
 
 @code {
+    private GameInputModel gameInputModel = new();
+
+    private void HandleValidSubmit()
+    {
+        NavigationManager.NavigateTo("counter");
+    }
 }
