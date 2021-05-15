@@ -4,15 +4,12 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System;
+using Newtonsoft.Json;
 
 namespace BoardWatcher.Data
 {
     public class ChessGameStateService
     {
-        CancellationTokenSource disposalTokenSource = new CancellationTokenSource();
-        ClientWebSocket webSocket = new ClientWebSocket();
-        public string message = "Hello, websocket!";
-        public string log = "";
         public ChessGameState gameState = new ChessGameState();
         public Piece[] generateNewBoard()
         {
@@ -72,31 +69,9 @@ namespace BoardWatcher.Data
             return Task.FromResult(pieces.ToArray());
         }
 
-        public async Task GetServerData()
+        public Piece[] getPieceDataFromJson()
         {
-            await webSocket.ConnectAsync(new Uri("127.0.0.1:8185"), disposalTokenSource.Token);
-            _ = ReceiveLoop();
-        }
-
-        async Task ReceiveLoop()
-        {
-            var buffer = new ArraySegment<byte>(new byte[1024]);
-            while (!disposalTokenSource.IsCancellationRequested)
-            {
-                // Note that the received block might only be part of a larger message. If this applies in your scenario,
-                // check the received.EndOfMessage and consider buffering the blocks until that property is true.
-                // Or use a higher-level library such as SignalR.
-                var received = await webSocket.ReceiveAsync(buffer, disposalTokenSource.Token);
-                var receivedAsText = Encoding.UTF8.GetString(buffer.Array, 0, received.Count);
-                log += $"Received: {receivedAsText}\n";
-                Console.WriteLine("Received: ", log);
-            }
-        }
-
-        public void Dispose()
-        {
-            disposalTokenSource.Cancel();
-            _ = webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Bye", CancellationToken.None);
+           return System.Text.Json.JsonSerializer.Deserialize<Piece[]>("/piecesTest.json");
         }
 
     public string GetPiece(int tileId)

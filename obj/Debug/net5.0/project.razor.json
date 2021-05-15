@@ -177,6 +177,39 @@
         }
       },
       {
+        "HashCode": -497132188,
+        "Kind": "Components.Component",
+        "Name": "BoardWatcher.Pages.GameFinder",
+        "AssemblyName": "BoardWatcher",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "GameFinder"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BoardWatcher.Pages.GameFinder"
+        }
+      },
+      {
+        "HashCode": -319045553,
+        "Kind": "Components.Component",
+        "Name": "BoardWatcher.Pages.GameFinder",
+        "AssemblyName": "BoardWatcher",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BoardWatcher.Pages.GameFinder"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BoardWatcher.Pages.GameFinder",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1818469574,
         "Kind": "Components.Component",
         "Name": "BoardWatcher.App",
@@ -16001,6 +16034,11 @@
     {
       "FilePath": "c:\\Users\\Vander\\Documents\\Programming\\C#\\BoardWatcher\\Shared\\NavMenu.razor",
       "TargetPath": "Shared\\NavMenu.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "c:\\Users\\Vander\\Documents\\Programming\\C#\\BoardWatcher\\Pages\\GameFinder.razor",
+      "TargetPath": "Pages\\GameFinder.razor",
       "FileKind": "component"
     },
     {

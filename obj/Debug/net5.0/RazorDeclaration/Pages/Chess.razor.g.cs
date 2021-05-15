@@ -89,6 +89,27 @@ using BoardWatcher.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+using System.Net.WebSockets;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+using System.Text;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+using System.Threading;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/chess")]
     public partial class Chess : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,11 +119,17 @@ using BoardWatcher.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 156 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+#line 158 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
        
     private Piece[] gameBoard;
     private Move[] MovesHistory;
+    private List<string> MovesInNotation = new List<string>();
     private int moveCounter;
+
+    private CancellationTokenSource disposalTokenSource = new CancellationTokenSource();
+    private ClientWebSocket webSocket = new ClientWebSocket();
+    private  string message = "Hello, websocket!";
+    private string log = "";
     protected override async Task OnInitializedAsync()
     {
         gameBoard = await GameStateService.GetPieceData();
@@ -114,22 +141,44 @@ using BoardWatcher.Data;
             new Move(1, 50, 42),
             new Move(4, 2, 16),
             new Move(3 ,62, 47),
-            new Move(4, 16, 52)
+            new Move(4, 16, 52),
+            new Move(4, 61, 52)
         };
         MovesHistory = moves;
+        foreach (Move move in MovesHistory)
+        {
+            MovesInNotation.Add(getMoveInNotation(move));
+        }
+        await webSocket.ConnectAsync(new Uri("wss://echo.websocket.org"), disposalTokenSource.Token);
+        _ = ReceiveLoop();
     }
 
 
     public void moveForward()
     {
-        Move currentMove = MovesHistory[moveCounter];
-        this.gameBoard[currentMove.toField] = this.gameBoard[currentMove.fromField];
-        this.gameBoard[currentMove.fromField] = getClearField();
-        if (moveCounter < MovesHistory.Length - 1) moveCounter++;
+        if (moveCounter < MovesHistory.Length)
+        {
+            Move currentMove = MovesHistory[moveCounter];
+            this.gameBoard[currentMove.toField] = this.gameBoard[currentMove.fromField];
+            this.gameBoard[currentMove.fromField] = getClearField();
+            if (moveCounter < MovesHistory.Length) moveCounter++;
+        }
     }
     public void moveBackwards()
     {
         if (moveCounter > 0) moveCounter--;
+    }
+
+    async Task ReceiveLoop()
+    {
+        var buffer = new ArraySegment<byte>(new byte[1024]);
+        while (!disposalTokenSource.IsCancellationRequested)
+        {
+            var received = await webSocket.ReceiveAsync(buffer, disposalTokenSource.Token);
+            var receivedAsText = Encoding.UTF8.GetString(buffer.Array, 0, received.Count);
+            log += $"Received: {receivedAsText}\n";
+            StateHasChanged();
+        }
     }
 
     public void moveFastForward()
@@ -151,6 +200,10 @@ using BoardWatcher.Data;
     {
         string fieldName = "";
         fieldName += getPieceName(move.pieceId);
+        if (gameBoard[move.toField].Id != 0) // check if capture
+        {
+            fieldName += "x";
+        }
         fieldName += ((char)(move.toField % 8 + 97));
         fieldName += (8 - move.toField / 8).ToString();
         return fieldName;
@@ -159,12 +212,12 @@ using BoardWatcher.Data;
     public async void DownloadFile()
     {
         string fileContent = "";
-        foreach (Move move in MovesHistory)
+        foreach (string move in MovesInNotation)
         {
-            fileContent += @getMoveInNotation(move);
+            fileContent += move;
             fileContent += " ";
         }
-        await JSRuntime.InvokeAsync<object>( "FileSave", "PGN", fileContent);
+        await JSRuntime.InvokeAsync<object>("FileSave", "PGN", fileContent);
     }
 
     public string getPieceName(int pieceId)
