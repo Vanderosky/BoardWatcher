@@ -45,6 +45,39 @@
         }
       },
       {
+        "HashCode": -497132188,
+        "Kind": "Components.Component",
+        "Name": "BoardWatcher.Pages.GameFinder",
+        "AssemblyName": "BoardWatcher",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "GameFinder"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BoardWatcher.Pages.GameFinder"
+        }
+      },
+      {
+        "HashCode": -319045553,
+        "Kind": "Components.Component",
+        "Name": "BoardWatcher.Pages.GameFinder",
+        "AssemblyName": "BoardWatcher",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "BoardWatcher.Pages.GameFinder"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "BoardWatcher.Pages.GameFinder",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 938943013,
         "Kind": "Components.Component",
         "Name": "BoardWatcher.Pages.Index",
@@ -131,35 +164,35 @@
         }
       },
       {
-        "HashCode": -497132188,
+        "HashCode": -1818469574,
         "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.GameFinder",
+        "Name": "BoardWatcher.App",
         "AssemblyName": "BoardWatcher",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "GameFinder"
+            "TagName": "App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.GameFinder"
+          "Common.TypeName": "BoardWatcher.App"
         }
       },
       {
-        "HashCode": -319045553,
+        "HashCode": 125088619,
         "Kind": "Components.Component",
-        "Name": "BoardWatcher.Pages.GameFinder",
+        "Name": "BoardWatcher.App",
         "AssemblyName": "BoardWatcher",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "BoardWatcher.Pages.GameFinder"
+            "TagName": "BoardWatcher.App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Pages.GameFinder",
+          "Common.TypeName": "BoardWatcher.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -405,72 +438,6 @@
           "Runtime.Name": "Components.None",
           "Common.TypeName": "BoardWatcher.Shared.MainLayout.Body",
           "Components.IsSpecialKind": "Components.ChildContent",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1382613882,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Shared.NavMenu",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Shared.NavMenu"
-        }
-      },
-      {
-        "HashCode": 896078708,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.Shared.NavMenu",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BoardWatcher.Shared.NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.Shared.NavMenu",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1818469574,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.App",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.App"
-        }
-      },
-      {
-        "HashCode": 125088619,
-        "Kind": "Components.Component",
-        "Name": "BoardWatcher.App",
-        "AssemblyName": "BoardWatcher",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "BoardWatcher.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "BoardWatcher.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

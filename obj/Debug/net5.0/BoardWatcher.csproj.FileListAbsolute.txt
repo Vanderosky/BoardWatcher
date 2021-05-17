@@ -68,9 +68,9 @@ C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\System.IO.Pipelines.dll
-C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Data\piecesTest.json
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\obj\Debug\net5.0\RazorDeclaration\Pages\GameFinder.razor.g.cs
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\obj\Debug\net5.0\Razor\Pages\GameFinder.razor.g.cs
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\obj\Debug\net5.0\RazorDeclaration\Shared\GameFinderLayout.razor.g.cs
 C:\Users\Vander\Documents\Programming\C#\BoardWatcher\obj\Debug\net5.0\Razor\Shared\GameFinderLayout.razor.g.cs
+C:\Users\Vander\Documents\Programming\C#\BoardWatcher\bin\Debug\net5.0\Data\TestData\piecesTest.json

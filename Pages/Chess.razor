@@ -163,7 +163,7 @@ else
 }
 
 @code {
-    private Piece[] gameBoard;
+    private PieceCV[] gameBoard;
     private Move[] MovesHistory;
     private List<string> MovesInNotation = new List<string>();
     private int moveCounter;
@@ -236,9 +236,9 @@ else
         moveCounter = 0;
     }
 
-    public Piece getClearField()
+    public PieceCV getClearField()
     {
-        return new Piece(0, false);
+        return new PieceCV(0, false);
     }
 
     public string getMoveInNotation(Move move)
@@ -287,7 +287,7 @@ else
         return "";
     }
 
-    public string GetPiece(Piece piece)
+    public string GetPiece(PieceCV piece)
     {
         if (piece.Color)
         {

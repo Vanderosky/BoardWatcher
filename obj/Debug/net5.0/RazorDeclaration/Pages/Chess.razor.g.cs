@@ -122,7 +122,7 @@ using System.Threading;
 #nullable restore
 #line 165 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
        
-    private Piece[] gameBoard;
+    private PieceCV[] gameBoard;
     private Move[] MovesHistory;
     private List<string> MovesInNotation = new List<string>();
     private int moveCounter;
@@ -195,9 +195,9 @@ using System.Threading;
         moveCounter = 0;
     }
 
-    public Piece getClearField()
+    public PieceCV getClearField()
     {
-        return new Piece(0, false);
+        return new PieceCV(0, false);
     }
 
     public string getMoveInNotation(Move move)
@@ -246,7 +246,7 @@ using System.Threading;
         return "";
     }
 
-    public string GetPiece(Piece piece)
+    public string GetPiece(PieceCV piece)
     {
         if (piece.Color)
         {

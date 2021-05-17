@@ -11,72 +11,72 @@ namespace BoardWatcher.Data
     public class ChessGameStateService
     {
         public ChessGameState gameState = new ChessGameState();
-        public Piece[] generateNewBoard()
+        public PieceCV[] generateNewBoard()
         {
-            Piece[] pieces = new Piece[64];
-            Piece[] blackPieces = new Piece[]
+            PieceCV[] pieces = new PieceCV[64];
+            PieceCV[] blackPieces = new PieceCV[]
             {
-                new Piece(2, false),
-                new Piece(3, false),
-                new Piece(4, false),
-                new Piece(5, false),
-                new Piece(6, false),
-                new Piece(4, false),
-                new Piece(3, false),
-                new Piece(2, false),
+                new PieceCV(2, false),
+                new PieceCV(3, false),
+                new PieceCV(4, false),
+                new PieceCV(5, false),
+                new PieceCV(6, false),
+                new PieceCV(4, false),
+                new PieceCV(3, false),
+                new PieceCV(2, false),
 
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false),
-                new Piece(1, false)
+                new PieceCV(1, false),
+                new PieceCV(1, false),
+                new PieceCV(1, false),
+                new PieceCV(1, false),
+                new PieceCV(1, false),
+                new PieceCV(1, false),
+                new PieceCV(1, false),
+                new PieceCV(1, false)
             };
-            Piece[] whitePieces = new Piece[]
+            PieceCV[] whitePieces = new PieceCV[]
             {
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
-                new Piece(1, true),
+                new PieceCV(1, true),
+                new PieceCV(1, true),
+                new PieceCV(1, true),
+                new PieceCV(1, true),
+                new PieceCV(1, true),
+                new PieceCV(1, true),
+                new PieceCV(1, true),
+                new PieceCV(1, true),
 
-                new Piece(2, true),
-                new Piece(3, true),
-                new Piece(4, true),
-                new Piece(5, true),
-                new Piece(6, true),
-                new Piece(4, true),
-                new Piece(3, true),
-                new Piece(2, true)
+                new PieceCV(2, true),
+                new PieceCV(3, true),
+                new PieceCV(4, true),
+                new PieceCV(5, true),
+                new PieceCV(6, true),
+                new PieceCV(4, true),
+                new PieceCV(3, true),
+                new PieceCV(2, true)
             };
             blackPieces.CopyTo(pieces, 0);
             for (int i = 16; i < 48; i++)
             {
-                pieces[i] = new Piece(0, false);
+                pieces[i] = new PieceCV(0, false);
             }
             whitePieces.CopyTo(pieces, 48);
             return pieces;
         }
-        public Task<Piece[]> GetPieceData()
+        public Task<PieceCV[]> GetPieceData()
         {
-            Piece[] pieces = new Piece[64];
+            PieceCV[] pieces = new PieceCV[64];
             pieces = generateNewBoard();
             return Task.FromResult(pieces.ToArray());
         }
 
-        public Piece[] getPieceDataFromJson()
+        public PieceCV[] getPieceDataFromJson()
         {
-           return System.Text.Json.JsonSerializer.Deserialize<Piece[]>("/piecesTest.json");
+           return System.Text.Json.JsonSerializer.Deserialize<PieceCV[]>("/piecesTest.json");
         }
 
     public string GetPiece(int tileId)
     {
-        Piece tmpPiece = this.gameState.Board[tileId];
+        PieceCV tmpPiece = this.gameState.Board[tileId];
         if (tmpPiece.Color)
         {
             switch (tmpPiece.Id)
