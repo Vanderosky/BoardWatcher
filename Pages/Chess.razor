@@ -1,4 +1,5 @@
 ﻿@page "/chess"
+@page "/chess/{gameId}"
 
 @using BoardWatcher.Data
 @inject ChessGameStateService GameStateService
@@ -7,6 +8,12 @@
 @using System.Text
 @using System.Threading
 
+@if (gameId != null)
+{
+    <div class="center">
+        <h1>Game ID: @gameId</h1>
+    </div>
+}
 @if (gameBoard == null)
 {
     <p><em>Loading...</em></p>
@@ -160,6 +167,9 @@ else
     private Move[] MovesHistory;
     private List<string> MovesInNotation = new List<string>();
     private int moveCounter;
+
+    [Parameter]
+    public string gameId { get; set; }
 
     private CancellationTokenSource disposalTokenSource = new CancellationTokenSource();
     private ClientWebSocket webSocket = new ClientWebSocket();

@@ -1,4 +1,5 @@
-@page "/gameFinder"
+@layout GameFinderLayout
+@page "/"
 @inject NavigationManager NavigationManager
 
 <div class="cotainer">
@@ -33,6 +34,6 @@
 
     private void HandleValidSubmit()
     {
-        NavigationManager.NavigateTo("counter");
+        NavigationManager.NavigateTo("chess/" + gameInputModel.Id);
     }
 }

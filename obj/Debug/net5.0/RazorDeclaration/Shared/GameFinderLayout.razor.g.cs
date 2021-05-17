@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace BoardWatcher.Pages
+namespace BoardWatcher.Shared
 {
     #line hidden
     using System;
@@ -82,29 +82,13 @@ using BoardWatcher.Shared;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.LayoutAttribute(typeof(GameFinderLayout))]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class GameFinder : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class GameFinderLayout : LayoutComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 32 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\GameFinder.razor"
-       
-    private GameInputModel gameInputModel = new();
-
-    private void HandleValidSubmit()
-    {
-        NavigationManager.NavigateTo("chess/" + gameInputModel.Id);
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591
