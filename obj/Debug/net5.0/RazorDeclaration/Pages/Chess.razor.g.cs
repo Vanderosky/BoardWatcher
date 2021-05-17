@@ -82,7 +82,36 @@ using BoardWatcher.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+using BoardWatcher.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+using System.Net.WebSockets;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+using System.Text;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+using System.Threading;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/chess")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/chess/{gameId}")]
     public partial class Chess : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -91,69 +120,181 @@ using BoardWatcher.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 133 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
+#line 165 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Pages\Chess.razor"
        
-    public class ChessBoard
+    private PieceCV[] gameBoard;
+    private Move[] MovesHistory;
+    private List<string> MovesInNotation = new List<string>();
+    private int moveCounter;
+
+    [Parameter]
+    public string gameId { get; set; }
+
+    private CancellationTokenSource disposalTokenSource = new CancellationTokenSource();
+    private ClientWebSocket webSocket = new ClientWebSocket();
+    private  string message = "Hello, websocket!";
+    private string log = "";
+    protected override async Task OnInitializedAsync()
     {
-        private Piece[,] grid = new Piece[9, 9];
-    }
-    public class Piece
-    {
-        public Piece(int id, Boolean colour, Coords coord)
+        gameBoard = await GameStateService.GetPieceData();
+        moveCounter = 0;
+        Move[] moves = new Move[]
         {
-            this.Id = id;
-            this.Colour = colour;
-            this.Coord = coord;
-        }
-        private int Id { get; set; }
-        private Boolean Colour { get; set; }
-        private Coords Coord { get; set; }
-
-    }
-
-    public struct Coords
-    {
-        public Coords(double x, double y)
+            new Move(1 ,48, 40),
+            new Move(1, 9, 17),
+            new Move(1, 50, 42),
+            new Move(4, 2, 16),
+            new Move(3 ,62, 47),
+            new Move(4, 16, 52),
+            new Move(4, 61, 52)
+        };
+        MovesHistory = moves;
+        foreach (Move move in MovesHistory)
         {
-            X = x;
-            Y = y;
+            MovesInNotation.Add(getMoveInNotation(move));
         }
-
-        public double X { get; }
-        public double Y { get; }
-
-        public override string ToString() => $"({X}, {Y})";
+        await webSocket.ConnectAsync(new Uri("wss://echo.websocket.org"), disposalTokenSource.Token);
+        _ = ReceiveLoop();
     }
-    public class GameState
-    {
-        public string Event { get; set; }
-        public string Site { get; set; }
-        public string Date { get; set; }
-        public string Round { get; set; }
-        public string White { get; set; }
-        public string Black { get; set; }
-        public string Result { get; set; }
-        public Move[] Moves { get; set; }
 
-        public void GameStateParser(string input)
+
+    public void moveForward()
+    {
+        if (moveCounter < MovesHistory.Length)
         {
-            //TODO
+            Move currentMove = MovesHistory[moveCounter];
+            this.gameBoard[currentMove.toField] = this.gameBoard[currentMove.fromField];
+            this.gameBoard[currentMove.fromField] = getClearField();
+            if (moveCounter < MovesHistory.Length) moveCounter++;
+        }
+    }
+    public void moveBackwards()
+    {
+        if (moveCounter > 0) moveCounter--;
+    }
+
+    async Task ReceiveLoop()
+    {
+        var buffer = new ArraySegment<byte>(new byte[1024]);
+        while (!disposalTokenSource.IsCancellationRequested)
+        {
+            var received = await webSocket.ReceiveAsync(buffer, disposalTokenSource.Token);
+            var receivedAsText = Encoding.UTF8.GetString(buffer.Array, 0, received.Count);
+            log += $"Received: {receivedAsText}\n";
+            StateHasChanged();
         }
     }
 
-    public struct Move
+    public void moveFastForward()
     {
-        public int MoveId { get; }
-        public int Piece { get; }
-        public int CordX { get; }
-        public int CordY { get; }
+        moveCounter = MovesHistory.Length;
+    }
 
-        //TO FINISH WITH GameStateParser
+    public void moveFastBackwards()
+    {
+        moveCounter = 0;
+    }
+
+    public PieceCV getClearField()
+    {
+        return new PieceCV(0, false);
+    }
+
+    public string getMoveInNotation(Move move)
+    {
+        string fieldName = "";
+        fieldName += getPieceName(move.pieceId);
+        if (gameBoard[move.toField].Id != 0) // check if capture
+        {
+            fieldName += "x";
+        }
+        fieldName += ((char)(move.toField % 8 + 97));
+        fieldName += (8 - move.toField / 8).ToString();
+        return fieldName;
+    }
+
+    public async void DownloadFile()
+    {
+        string fileContent = "";
+        foreach (string move in MovesInNotation)
+        {
+            fileContent += move;
+            fileContent += " ";
+        }
+        await JSRuntime.InvokeAsync<object>("FileSave", "PGN", fileContent);
+    }
+
+    public string getPieceName(int pieceId)
+    {
+        switch (pieceId)
+        {
+            case 0:
+                return "";
+            case 1:
+                return ""; // pawn
+            case 2:
+                return "R"; // rook
+            case 3:
+                return "N"; // knight
+            case 4:
+                return "B"; // bishop
+            case 5:
+                return "Q"; // queen
+            case 6:
+                return "K"; // king
+        }
+        return "";
+    }
+
+    public string GetPiece(PieceCV piece)
+    {
+        if (piece.Color)
+        {
+            switch (piece.Id)
+            {
+                case 1:
+                    return "♙";
+                case 2:
+                    return "♖";
+                case 3:
+                    return "♘";
+                case 4:
+                    return "♗";
+                case 5:
+                    return "♕";
+                case 6:
+                    return "♔";
+                default:
+                    return "";
+            }
+        }
+        else
+        {
+            switch (piece.Id)
+            {
+                case 1:
+                    return "♟";
+                case 2:
+                    return "♜";
+                case 3:
+                    return "♞";
+                case 4:
+                    return "♝";
+                case 5:
+                    return "♛";
+                case 6:
+                    return "♚";
+                default:
+                    return "";
+            }
+        }
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime JSRuntime { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ChessGameStateService GameStateService { get; set; }
     }
 }
 #pragma warning restore 1591

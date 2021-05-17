@@ -90,7 +90,7 @@ using BoardWatcher.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Shared\NavMenu.razor"
+#line 23 "C:\Users\Vander\Documents\Programming\C#\BoardWatcher\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 
